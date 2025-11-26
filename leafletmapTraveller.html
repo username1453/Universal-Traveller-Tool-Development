@@ -13,13 +13,28 @@
   <body>
     <div class="starfield"></div>
     <h1 style="color: #32CD32; text-align: center;">TAS Planetary Data Interface Circa. 3002</h1>  
-    <button id="invert-btn" class="custom-btn">Invert Map</button>
-    <button id="toggle-marker-btn" class="custom-btn">Toggle Spaceship</button>
-    <a href="sector_data/Binder%20Front%20Pages.pdf" target="_blank">
-      <button id="explain-btn" class="custom-btn">Explanatory Data</button>
-    </a>
+    <nav class="navbar">
     <button id="toggleLegend" class="custom-btn">Toggle Legend</button>
+    <div class="menu-icon" onclick="toggleMenu()">
+      ☰
+    </div>
+      <ul id="menu" class="menu">
+        <li><button id="invert-btn" class="custom-btn">Invert Map</button></li>
+        <li><button id="toggle-marker-btn" class="custom-btn">Toggle Spaceship</button></li>
+        <li>
+          <a href="sector_data/Binder%20Front%20Pages.pdf" target="_blank">
+            <button id="explain-btn" class="custom-btn">Explanatory Data</button>
+          </a>
+        </li>
+      </ul>
+    </nav>
     <div id="map"></div> <!-- The map! -->
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("menu");
+        menu.style.display = (menu.style.display === "block") ? "none" : "block";
+      }
+    </script>
     <script src="js/jquery-3.7.1.js"></script>
     <script src="js/leaflet.js"></script>
     <script src="js/esri-leaflet-debug.js"></script>
@@ -29,3 +44,4 @@
     <script src="js/index.js"></script>
   </body>
 </html>
+
