@@ -160,6 +160,12 @@ html, body {
         z-index: 9999;
       }
 
+      .menu li button,
+        .menu li a {
+            position: relative !important;
+            left: 0;
+            top: 0;
+        }
 
 
 
@@ -274,4 +280,5 @@ html, body {
   .legend-hidden {
     display: none !important;
   }
+
 
