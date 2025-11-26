@@ -73,7 +73,7 @@ html, body {
     width: 100%;
     height: 100%;
     background: url('../images/darkness.webp') repeat; /* A small starry image */
-    animation: move-stars 30s linear infinite;
+    animation: move-stars 30s linear infinite; /* Animation to move the stars */
     z-index: -1; /* Ensures stars are behind the content */
 }
 
@@ -95,9 +95,9 @@ html, body {
     width: 85%;
     height: 90%;
     z-index: 1;  /* Ensures map stays above the stars */
-    background: url('../images/darkness.webp') repeat; /* Starfield image as background */
-    background-size: cover; /* Make the background cover the entire map */
-    animation: move-stars 30s linear infinite; /* Animation to move the stars */
+    /*background: url('../images/darkness.webp') repeat; 
+    background-size: cover; 
+    animation: move-stars 30s linear infinite; */
 
     display: grid;
     place-items: center;
@@ -133,41 +133,36 @@ html, body {
 }
 
 /* Style the top navigation bar */
-.topnav {
-    overflow: hidden;
-    background-color: #333;
-    z-index: 2;  /* Ensures topnav stays above the map */
-}
+    .navbar {
+        background: #333;
+        padding: 10px;
+        color: white;
+        position: relative;
+      }
 
-/* Style the topnav links */
-.topnav a {
-    float: left;
-    display: block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
+      .menu-icon {
+        font-size: 24px;
+        cursor: pointer;
+        user-select: none;
+      }
 
-/* Change color on hover */
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
-}
+      .menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: none;
+        background: #444;
+        position: absolute;
+        top: 50px;
+        left: 10px;
+        width: 180px;
+        border-radius: 4px;
+        z-index: 9999;
+      }
 
-/* Style the content */
-.content {
-    background-color: #ddd;
-    padding: 10px;
-    height: 200px; /* Should be removed. Only for demonstration */
-}
 
-/* Style the footer */
-.footer {
-    background-color: #f1f1f1;
-    padding: 10px;
-    z-index: 2;  /* Ensures footer stays above the stars */
-}
+
+
 
 /* Custom Popup Style with Starfield Background */
 .leaflet-popup-content-wrapper {
@@ -279,3 +274,4 @@ html, body {
   .legend-hidden {
     display: none !important;
   }
+
