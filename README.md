@@ -3,6 +3,7 @@ A tool for the Traveller RPG for the Solomani Sector of in my version of the Int
 
 Quick Rundown of files
 css-self-explanatory. The background image (stars) is made here.
+
 images-Images within are the files used for the icons for the webpage. This goes from things directly on the map like planets to even things that appear in popups like the base identifiers. The background is not here.
 js-This holds all of the custom js data. Most of the data is actually geojson data that has been formatted as js for usage with leaflet.
 leaflet-Leaflet repository
