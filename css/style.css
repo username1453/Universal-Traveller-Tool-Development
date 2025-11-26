@@ -149,8 +149,19 @@ html, body {
     width: 100%;
     background: #333;
     padding: 10px;
-    position: relative;
-    z-index: 2000;
+    
+    /* CHANGE THIS: Switch from relative to absolute/fixed */
+    position: absolute; 
+    top: 60px; /* Adjust this to sit right below your H1 */
+    left: 0;
+    
+    /* Ensure it is the highest thing on the page */
+    z-index: 4999; 
+    
+    /* Add flexbox to fix the icon/button alignment while we are here */
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
 }
 
 /* Optional: Menu background */
@@ -279,6 +290,7 @@ html, body {
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
