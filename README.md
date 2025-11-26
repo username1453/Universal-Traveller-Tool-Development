@@ -1,7 +1,7 @@
 # Universal-Traveller-Tool
 A tool for the Traveller RPG for the Solomani Sector of in my version of the Interstellar War period. This repository is the website and associated data. It was primarily hosted on Github for Github pages usage so that the map and accompanying data would be usable on various devices.
 
-Quick Rundown of files
+<b>Quick Rundown of files</b>
 
 css-self-explanatory. The background image (stars) is made here.
 
