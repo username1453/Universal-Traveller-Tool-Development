@@ -18,7 +18,13 @@ html, body {
     padding-top: 10%;
     overflow: hidden;  /* Prevents scrolling */
   }
-  
+    
+  .footer {
+    height: 5vh; /* Set fixed height to 5% of viewport height */
+    width: 100%;
+    /* Optional: background: blue; to see it while debugging */
+   }
+
   /* Style for the custom buttons */
 .custom-btn {
     position: absolute;
@@ -77,20 +83,13 @@ html, body {
 
 /* Make sure the map takes up the only part of the screen and is centered */
 #map {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 85%;
-    height: 90%;
-    z-index: 1;  /* Ensures map stays above the stars */
-    /*background: url('../images/darkness.webp') repeat; 
-    background-size: cover; 
-    animation: move-stars 30s linear infinite; */
-
-    display: grid;
-    place-items: center;
-    transform: translate(-50%, -50%);  /* Center map */
-    overflow: hidden; /* Hide overflow to ensure the gradient doesn’t spill out */
+    /* REMOVE absolute positioning and centering hacks */
+    /* position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); */
+    
+    width: 100%; /* Fill the container width */
+    height: 90vh; /* Set fixed height to 90% of viewport height */
+    z-index: 1;
+    overflow: hidden; 
 }
 
 
@@ -151,18 +150,15 @@ html, body {
 
 /* Navbar full width */
 .navbar {
-    width: 100%;
+    min-height: 4vh; /* Set min-height using vh, but rely on height below */
+    height: 5vh; /* Set fixed height to 5% of viewport height */
+    width: 100%; /* Ensure full width */
+    z-index: 4999;
+    
     background: transparent;
-    padding: 10px 5% 10px 5%;
-    position: absolute; 
-    top: 1%; 
-    left: 0%;
-    z-index: 4999;  
-    min-height: 4%;
+    padding: 10px 5% 10px 5%; /* Keep your padding */
     display: flex;
-    /* FIX: Align items vertically in the center */
     align-items: center; 
-    /* NEW: Puts elements (icon, title, button) on either side */
     justify-content: space-between;
 }
 
@@ -182,12 +178,10 @@ html, body {
 }
 
 .nav-title {
-    position: absolute;
-    top: 1%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1; /* Keep it below icon/button z-index */
-    /* Ensure text is centered within its own absolute box */
+    /* Use margin: auto to center it cleanly between the two elements in Flexbox */
+    margin: 0 auto; 
+    
+    z-index: 1;
     text-align: center; 
 }
 
@@ -302,6 +296,7 @@ html, body {
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
