@@ -151,7 +151,7 @@ html, body {
 /* Navbar full width */
 .navbar {
     width: 100%;
-    background: #333;
+    background: transparent;
     padding: 10px;
     position: absolute; 
     top: 1%; /* Adjust this to sit right below your H1 */
@@ -300,6 +300,7 @@ html, body {
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
