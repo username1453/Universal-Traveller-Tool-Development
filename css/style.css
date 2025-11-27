@@ -93,7 +93,7 @@
     /* REMOVE absolute positioning and centering hacks */
     /* position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); */
     
-    width: 100%; /* Fill the container width */
+    width: 95%; /* Fill the container width */
     height: 90vh; /* Set fixed height to 90% of viewport height */
     z-index: 1;
     overflow: hidden; 
@@ -303,6 +303,7 @@
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
