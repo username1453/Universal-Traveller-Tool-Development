@@ -132,7 +132,7 @@ html, body {
     display: block;
     box-sizing: border-box;
     margin: 0;      /* Ensure no extra spacing */
-    padding: 8px 10px; /* Optional padding */
+    padding: 2% 10px; /* Optional padding */
 }
 
 /* Hamburger icon always on top */
@@ -152,9 +152,9 @@ html, body {
 .navbar {
     width: 100%;
     background: transparent;
-    padding: 10px;
+    padding: 10px 3% 10px 3%;
     position: absolute; 
-    top: 1%; 
+    top: 10%; 
     left: 0%;
     z-index: 4999;  
     min-height: 3%;
@@ -300,6 +300,7 @@ html, body {
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
