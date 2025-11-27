@@ -48,7 +48,7 @@ html, body {
 
   #toggleLegend {
     position: absolute;
-    top: 50%;
+    top: 10%;
     left: 8%;
   }
   
@@ -300,6 +300,7 @@ html, body {
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
