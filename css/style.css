@@ -15,6 +15,7 @@ html, body {
   /* Space background with stars */
   body {
     background: #000;
+    padding-top: 5%;
     overflow: hidden;  /* Prevents scrolling */
   }
   
@@ -137,9 +138,9 @@ html, body {
 
 /* Hamburger icon always on top */
 .menu-icon {
-    position: absolute;
+    /*position: absolute;
     top: 1%;
-    left: 3%;
+    left: 3%; */
     z-index: 2001;
     font-size: 24px;
     cursor: pointer;
@@ -154,7 +155,7 @@ html, body {
     background: transparent;
     padding: 10px 3% 10px 3%;
     position: absolute; 
-    top: 10%; 
+    top: 1%; 
     left: 0%;
     z-index: 4999;  
     min-height: 3%;
@@ -300,6 +301,7 @@ html, body {
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
