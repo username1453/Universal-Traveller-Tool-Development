@@ -184,7 +184,6 @@ html, body {
     top: 1%;
     left: 50%;
     transform: translateX(-50%);
-    margin: 0; /* Remove default H1 margins */
     z-index: 1; /* Keep it below icon/button z-index */
     /* Ensure text is centered within its own absolute box */
     text-align: center; 
@@ -301,6 +300,7 @@ html, body {
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
