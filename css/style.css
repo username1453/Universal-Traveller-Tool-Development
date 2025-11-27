@@ -62,7 +62,7 @@
 
   #toggleLegend {
     position: absolute;
-    top: 10%;
+    top: 5%;
     left: 8%;
   }
   
@@ -303,6 +303,7 @@
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
