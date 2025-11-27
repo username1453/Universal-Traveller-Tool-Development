@@ -5,25 +5,32 @@
 }
 
 /* Ensure the html and body take up the full height and width */
-html, body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    position: relative;  /* Ensures z-index works properly */
-  }
-  
-  /* Space background with stars */
-  body {
-    background: #000;
-    padding-top: 10%;
-    overflow: hidden;  /* Prevents scrolling */
-  }
+/* Base size for HTML element */
+    html {
+        height: 100%;
+        width: 100%;
+      }
     
-  .footer {
-    height: 5vh; /* Set fixed height to 5% of viewport height */
-    width: 100%;
-    /* Optional: background: blue; to see it while debugging */
-   }
+    /* Body: Define as the full-screen Flexbox container */
+    body {
+        /* Base properties */
+        height: 100vh; /* Use Viewport Height for reliable Flexbox calculation */
+        width: 100%;
+        margin: 0;
+        position: relative;
+        background: #000;
+        overflow: hidden;
+        
+        /* ADD FLEXBOX LAYOUT PROPERTIES */
+        display: flex;
+        flex-direction: column; /* Stack the nav, map, and footer vertically */
+    }
+    
+    .footer {
+        height: 5vh; /* Set fixed height to 5% of viewport height */
+        width: 100%;
+        /* Optional: background: blue; to see it while debugging */
+    }
 
   /* Style for the custom buttons */
 .custom-btn {
@@ -296,6 +303,7 @@ html, body {
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
