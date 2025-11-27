@@ -48,8 +48,8 @@ html, body {
 
   #toggleLegend {
     position: absolute;
-    top: 1%;
-    left: 12%;
+    top: 50%;
+    left: 8%;
   }
   
 /* Create the stars */
@@ -137,11 +137,15 @@ html, body {
 
 /* Hamburger icon always on top */
 .menu-icon {
-    position: relative;
-    z-index: 2001; /* Above legend button */
+    /*position: absolute;
+    top: 1%;
+    left: 3%;*/
+    z-index: 2001;
     font-size: 24px;
     cursor: pointer;
     color: #32CD32;
+    /* Ensure it aligns well within the Flexbox: */
+    line-height: 1; 
 }
 
 /* Navbar full width */
@@ -149,19 +153,15 @@ html, body {
     width: 100%;
     background: #333;
     padding: 10px;
-    
-    /* CHANGE THIS: Switch from relative to absolute/fixed */
     position: absolute; 
-    top: 60px; /* Adjust this to sit right below your H1 */
-    left: 0;
-    
-    /* Ensure it is the highest thing on the page */
-    z-index: 4999; 
-    
-    /* Add flexbox to fix the icon/button alignment while we are here */
+    top: 1%; /* Adjust this to sit right below your H1 */
+    left: 0%;
+    z-index: 4999;  
     display: flex;
+    /* FIX: Align items vertically in the center */
+    align-items: center; 
+    /* NEW: Puts elements (icon, title, button) on either side */
     justify-content: space-between;
-    align-items: left;
 }
 
 /* Optional: Menu background */
@@ -170,13 +170,23 @@ html, body {
     margin: 0;
     padding: 0;
     display: none;
-    background: #444;
+    background: transparent;
     position: absolute;
     top: 50px;
     left: 10px;
     width: 180px;
     border-radius: 4px;
     z-index: 1999; /* Below hamburger icon */
+}
+
+.nav-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0; /* Remove default H1 margins */
+    z-index: 1; /* Keep it below icon/button z-index */
+    /* Ensure text is centered within its own absolute box */
+    text-align: center; 
 }
 
 
@@ -290,6 +300,7 @@ html, body {
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
