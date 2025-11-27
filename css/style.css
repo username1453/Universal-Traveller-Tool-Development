@@ -181,6 +181,7 @@ html, body {
 
 .nav-title {
     position: absolute;
+    top: 1%;
     left: 50%;
     transform: translateX(-50%);
     margin: 0; /* Remove default H1 margins */
@@ -300,6 +301,7 @@ html, body {
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
