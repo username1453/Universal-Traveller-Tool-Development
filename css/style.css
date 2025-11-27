@@ -182,7 +182,6 @@ html, body {
 
 .nav-title {
     position: absolute;
-    top: 1%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1; /* Keep it below icon/button z-index */
@@ -301,6 +300,7 @@ html, body {
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
