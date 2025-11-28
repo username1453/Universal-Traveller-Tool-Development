@@ -90,9 +90,7 @@
 
 /* Make sure the map takes up the only part of the screen and is centered */
 #map {
-    /* REMOVE absolute positioning and centering hacks */
-    /* position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); */
-    
+    margin: 0 auto;
     width: 95%; /* Fill the container width */
     height: 90vh; /* Set fixed height to 90% of viewport height */
     z-index: 1;
@@ -302,6 +300,7 @@
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
