@@ -162,7 +162,7 @@
     padding: 1vh 5% 1vh 5%; /* Keep your padding */
     display: flex;
     align-items: center; 
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 /* Optional: Menu background */
@@ -182,11 +182,13 @@
 }
 
 .nav-title {
-    /* Use margin: auto to center it cleanly between the two elements in Flexbox */
-    margin: 0 auto; /* Ensures horizontal centering */
+    position: absolute; /* Position absolutely within navbar */
+    left: 50%; /* Center on screen */
+    transform: translateX(-50%); /* Offset for true centering */
     line-height: 5vh;
     z-index: 1;
-    text-align: center; 
+    text-align: center;
+    margin: 0;
 }
 
 
@@ -300,6 +302,7 @@
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
