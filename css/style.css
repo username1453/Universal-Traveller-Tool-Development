@@ -144,15 +144,14 @@
 
 /* Hamburger icon always on top */
 .menu-icon {
-    /*position: absolute;
-    top: 1%;
-    left: 3%; */
     z-index: 2001;
     font-size: 24px;
     cursor: pointer;
     color: #32CD32;
-    /* Ensure it aligns well within the Flexbox: */
-    line-height: 1; 
+    line-height: 1;
+    display: flex;
+    align-items: center; /* Vertically center the icon */
+    flex-shrink: 0; /* Prevent shrinking */
 }
 
 /* Navbar full width */
@@ -186,8 +185,8 @@
 
 .nav-title {
     /* Use margin: auto to center it cleanly between the two elements in Flexbox */
-    margin: 0 auto; 
-    
+    margin: 0 auto; /* Ensures horizontal centering */
+    line-height: 1.2;
     z-index: 1;
     text-align: center; 
 }
@@ -303,6 +302,7 @@
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
