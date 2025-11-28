@@ -62,7 +62,7 @@
 
   #toggleLegend {
     position: absolute;
-    top: 5%;
+    top: 3%;
     left: 8%;
   }
   
@@ -154,8 +154,8 @@
 
 /* Navbar full width */
 .navbar {
-    min-height: 4vh; /* Set min-height using vh, but rely on height below */
-    height: 5vh; /* Set fixed height to 5% of viewport height */
+    min-height: 5vh; /* Set min-height using vh, but rely on height below */
+    height: 7vh; /* Set fixed height to 7% of viewport height */
     width: 100%; /* Ensure full width */
     z-index: 4999;
     
@@ -300,6 +300,7 @@
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
