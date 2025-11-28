@@ -61,9 +61,7 @@
   /* Specific button positioning */
 
   #toggleLegend {
-    position: absolute;
-    top: 3%;
-    left: 8%;
+    position: relative;
   }
   
 /* Create the stars */
@@ -301,6 +299,7 @@
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
