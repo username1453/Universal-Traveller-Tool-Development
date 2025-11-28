@@ -186,7 +186,7 @@
 .nav-title {
     /* Use margin: auto to center it cleanly between the two elements in Flexbox */
     margin: 0 auto; /* Ensures horizontal centering */
-    line-height: 1.2;
+    line-height: 5vh;
     z-index: 1;
     text-align: center; 
 }
@@ -302,6 +302,7 @@
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
