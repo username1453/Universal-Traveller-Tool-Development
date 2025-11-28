@@ -178,7 +178,8 @@
     left: 0; /* Align with the left edge of navbar */
     width: 180px;
     border-radius: 4px;
-    z-index: 5000; /* above hamburger icon */
+    z-index: 5000; /* Above navbar and map */
+    border: 1px solid #32CD32; /* Add border to match your theme */
 }
 
 .nav-title {
@@ -300,6 +301,7 @@
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
