@@ -174,8 +174,8 @@
     display: none;
     background: #000000;
     position: absolute;
-    top: 50px;
-    left: 10px;
+    top: 100%; /* Position directly below the navbar */
+    left: 0; /* Align with the left edge of navbar */
     width: 180px;
     border-radius: 4px;
     z-index: 1999; /* Below hamburger icon */
@@ -300,6 +300,7 @@
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
