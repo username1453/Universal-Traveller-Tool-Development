@@ -62,6 +62,7 @@
 
   #toggleLegend {
     position: relative;
+    margin-left: auto;
   }
   
 /* Create the stars */
@@ -299,6 +300,7 @@
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
