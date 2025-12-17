@@ -24,9 +24,30 @@
             Explanatory Data
           </a>
         </li>
-        <li><button id="toggle-marker-btn" class="custom-btn">Upload GEOJSON</button></li>
-        <li><button id="toggle-marker-btn" class="custom-btn">Download GEOJSON</button></li>
-        <li><button id="toggle-marker-btn" class="custom-btn">Military Units</button></li>
+        <li>
+          <button id="map-upload-btn" class="custom-btn" onclick="document.getElementById('map-upload').click()">Upload GEOJSON</button>
+          <input type="file" id="map-upload" class="hidden" accept=".json,.geojson,.js" />
+        </li>
+        <li><button id="map-download-btn" class="custom-btn">Download GEOJSON</button></li>
+                <li class="unit-control-group">
+          <button id="military-units-main-btn" class="custom-btn">Military Units</button>
+          <ul class="unit-dropdown-content">
+            <li>
+                <select id="unit-type-select">
+                    <option value="spaceship-red">Add Red Ship</option>
+                    <option value="soldier-red">Add Red Soldier</option>
+                    <option value="spaceship-blue">Add Blue Ship</option>
+                    <option value="soldier-blue">Add Blue Soldier</option>
+                </select>
+            </li>
+            <li><button id="add-unit-btn" class="custom-btn-small">Add Selected Unit</button></li>
+            <li>
+                <button id="load-army-btn" class="custom-btn-small" onclick="document.getElementById('unit-upload').click()">Load Army Data</button>
+                <input type="file" id="unit-upload" class="hidden" accept=".json" />
+            </li>
+            <li><button id="save-units-btn" class="custom-btn-small">Save Army Data</button></li>
+          </ul>
+        </li>
       </ul>
     <button id="toggleLegend" class="custom-btn">Toggle Legend</button>
     <h1 class="nav-title" style="color: #32CD32;">TAS Planetary Data Interface Circa. Dev. Ver</h1>
@@ -46,6 +67,8 @@
     <script src="js/PlanetaryData.js"></script>
     <script src="js/PoliticalBoundaries.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/MilitaryUnits.js"></script>
   </body>
 </html>
+
 
