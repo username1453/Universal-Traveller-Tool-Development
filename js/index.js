@@ -28,33 +28,6 @@ var backgroundtilelayer = L.tileLayer('tiles/main-map/{z}/{x}/{y}.jpg', {
     attribution: 'Map data &copy; Your Attribution'
 }).addTo(map);
 
-
-// 📏 ICON SCALING BASED ON ZOOM LEVEL
-function updateIconSizes() {
-    const zoom = map.getZoom();
-    const baseSize = 32;
-    const scaleFactor = 2;
-    const size = baseSize + (zoom * scaleFactor);
-
-    map.eachLayer(layer => {
-        // Skip DivIcon markers (like tactical units)
-        if (layer instanceof L.Marker && 
-            layer.options.icon && 
-            layer.options.icon.options.iconUrl) {  // ✅ Only process markers with iconUrl
-            layer.setIcon(L.icon({
-                iconUrl: layer.options.icon.options.iconUrl,
-                iconSize: [size, size],
-                iconAnchor: [size / 2, size / 2],
-                popupAnchor: [0, -size / 2]
-            }));
-        }
-    });
-}
-
-// Update icons on zoom
-map.on('zoomend', updateIconSizes);
-
-
 // 📊 MARKER AND CIRCLE SCALING
 
 // Base sizes for icons and circle markers at the initial zoom level
@@ -72,63 +45,9 @@ function getScaledIconSize(zoom) {
     return baseIconSize * (1 + (zoom - initialZoom) * scaleFactor);
 }
 
-/**
- * Update the size of all marker icons on the map based on the current zoom level.
- * Iterates through each map layer, identifies markers, and adjusts their icon size dynamically.
- */
-function updateMarkerIcons() {
-    const zoom = map.getZoom();
-    const size = getScaledIconSize(zoom);
-
-    map.eachLayer(layer => {
-        // Skip DivIcon markers (like tactical units)
-        if (layer instanceof L.Marker && 
-            layer.options.icon && 
-            layer.options.icon.options.iconUrl) {  // ✅ Only process markers with iconUrl
-            layer.setIcon(L.icon({
-                iconUrl: layer.options.icon.options.iconUrl,
-                iconSize: [size, size],
-                iconAnchor: [size / 2, size / 2],
-                popupAnchor: [0, -size / 2]
-            }));
-        }
-    });
-}
-
-/**
- * Calculate the scaled circle marker radius based on the current zoom level.
- * @param {number} zoom - Current zoom level of the map.
- * @returns {number} - The calculated circle radius adjusted for zoom.
- */
 function getScaledCircleRadius(zoom) {
     return baseCircleRadius * (1 + (zoom - initialZoom) * scaleFactor);
 }
-
-/**
- * Update the radius of all circle markers on the map based on the current zoom level.
- * Iterates through each map layer, identifies circle markers, and adjusts their radius dynamically.
- */
-function updateCircleMarkers() {
-    const zoom = map.getZoom(); // Get the current zoom level
-    const radius = getScaledCircleRadius(zoom); // Calculate the scaled radius
-
-    map.eachLayer(layer => {
-        // Check if the layer is a CircleMarker
-        if (layer instanceof L.CircleMarker) {
-            layer.setRadius(radius); // Apply the new scaled radius
-        }
-    });
-}
-
-// Update markers and circle markers on zoom
-map.on('zoomend', () => {
-    updateCircleMarkers();
-    updateMarkerIcons();
-});
-
-// Initial marker and circle updates
-updateMarkerIcons();
-updateCircleMarkers();
 
 
 // 🪐 CUSTOM ICON DEFINITIONS
@@ -535,4 +454,5 @@ document.getElementById('toggleLegend').addEventListener('click', function() {
     const control = document.querySelector('.legend-control');
     control.classList.toggle('legend-hidden');
 });
+
 
