@@ -1,0 +1,15 @@
+.unit-name-input {
+    border: 1px solid transparent;
+    padding: 2px;
+}
+
+.unit-name-input:hover {
+    border: 1px solid rgba(50, 205, 50, 0.3); /* Subtle green border on hover */
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.unit-name-input:focus {
+    outline: none;
+    border-bottom: 1px solid #32CD32; /* Green underline when editing */
+    background: rgba(255, 255, 255, 0.1);
+}
