@@ -52,8 +52,34 @@
     min-width: 120px; /* Prevent buttons from being too narrow */
     height: 28px; /* Define a standard button height */
   }
+
+.custom-btn-small {
+    position: relative; /* Change from absolute to relative */
+    display: block;    /* Makes them stack vertically in the menu */
+    margin: 5px auto;  /* Centers them and adds spacing between */
+    padding: 5px 10px;
+    font-size: 9px;
+    font-weight: bold; /* Bold text */
+    text-align: center;
+    border-radius: 12px; /* Rounded edges */
+    border: 3px solid #32CD32; /* Thick green outline */
+    background-color: transparent; /* Transparent fill */
+    color: #32CD32; /* Green text */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    z-index: 1000;
+    line-height: 1.2; /* Adjust line height for better vertical alignment */
+    width: auto; /* Ensure width adjusts based on text */
+    min-width: 100px; /* Prevent buttons from being too narrow */
+    height: 28px; /* Define a standard button height */
+}
   
   .custom-btn:hover {
+    background-color: #32CD32; /* Light green background on hover */
+    color: black; /* White text on hover */
+  }
+
+  .custom-btn-small:hover {
     background-color: #32CD32; /* Light green background on hover */
     color: black; /* White text on hover */
   }
@@ -322,41 +348,3 @@
   .legend-hidden {
     display: none !important;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
