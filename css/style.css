@@ -152,13 +152,16 @@
 }
 
 .unit-dropdown-content {
-  display: none; /* Hidden by default */
   position: absolute;
   background-color: rgba(0, 0, 0, 0.9);
   list-style: none;
   padding: 10px;
   margin: 0;
   z-index: 1000;
+}
+
+.unit-dropdown-content.hidden {
+  display: none; /* Only hide when it has the "hidden" class */
 }
 
 .unit-dropdown-content li {
@@ -203,11 +206,6 @@
     z-index: 1;
     text-align: center;
     margin: 0;
-}
-
-
-.military-unit-icon {
-    background: transparent;
 }
 
 /* Custom Popup Style with Starfield Background */
@@ -305,6 +303,10 @@
     background-image: url('../images/research_station.png'); /* Unused */
 }
 
+.military-unit-icon {
+    background: transparent;
+}
+
 /* Legend */
 /* This applies to the Leaflet legend control */
 .leaflet-control.legend-control {
@@ -320,6 +322,7 @@
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
