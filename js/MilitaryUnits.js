@@ -7,6 +7,10 @@ let tacticalUnits = [];
 // Create a separate layer group just for units so they sit on top of all other layers
 const unitLayerGroup = L.layerGroup().addTo(map);
 
+// Create a custom pane for tactical units with high z-index
+map.createPane('tacticalPane');
+map.getPane('tacticalPane').style.zIndex = 650; // Above markers (600) and tooltips (650)
+
 // --- UTILITIES & RENDERING ---
 
 /**
@@ -47,27 +51,46 @@ function renderUnit(unitData) {
     // Create Marker
     const marker = L.marker([unitData.lat, unitData.lng], {
         icon: icon,
-        draggable: true 
+        draggable: true,
+        pane: 'tacticalPane'
     });
 
-    // Bind Popup (The "Edit" interface)
-    // We use helper functions (updateUnitProp, removeUnit) defined on the window object 
-    // to interact with the unit data from inside the popup HTML.
-    const popupContent = `
+    // Conditional popup content based on unit type
+    let popupContent = `
         <div class="p-3 font-sans" style="min-width: 200px;">
             <h3 class="font-bold text-lg mb-1" style="color:${unitData.color === 'red' ? '#dc2626' : '#2563eb'}">
                 ${unitData.properties.name}
             </h3>
+    `;
+
+    // Show different stats based on unit type
+    if (unitData.type === 'spaceship') {
+        // Navy-specific stats
+        popupContent += `
             <div class="text-sm text-gray-600 mb-2">
-                <strong>Large Ships:</strong> <input type="number" value="${unitData.properties.heavy_strength}" 
+                <strong>Large Ships:</strong> <input type="number" value="${unitData.properties.heavy_strength || 0}" 
                     onchange="window.updateUnitProp('${unitData.id}', 'heavy_strength', this.value)"
                     class="border rounded px-1 w-24 text-sm">
             </div>
             <div class="text-sm text-gray-600 mb-2">
-                <strong>Support Ships:</strong> <input type="number" value="${unitData.properties.light_strength}" 
+                <strong>Support Ships:</strong> <input type="number" value="${unitData.properties.light_strength || 0}" 
                     onchange="window.updateUnitProp('${unitData.id}', 'light_strength', this.value)"
                     class="border rounded px-1 w-24 text-sm">
             </div>
+        `;
+    } else if (unitData.type === 'soldier') {
+        // Army-specific stats
+        popupContent += `
+            <div class="text-sm text-gray-600 mb-2">
+                <strong>Manpower:</strong> <input type="number" value="${unitData.properties.manpower || 0}" 
+                    onchange="window.updateUnitProp('${unitData.id}', 'manpower', this.value)"
+                    class="border rounded px-1 w-24 text-sm">
+            </div>
+        `;
+    }
+
+    // Common stats for both types
+    popupContent += `
             <div class="text-sm text-gray-600 mb-2">
                 <strong>Morale:</strong> <input type="number" value="${unitData.properties.morale}" 
                     onchange="window.updateUnitProp('${unitData.id}', 'morale', this.value)" 
@@ -140,20 +163,29 @@ document.addEventListener('DOMContentLoaded', () => {
         // Default location: Center of current map view
         const center = map.getCenter();
         
+        // Set default properties based on unit type
+        const properties = {
+            name: `${color.toUpperCase()} ${type === 'spaceship' ? 'Fleet' : 'Army'}`,
+            morale: 100,
+            status: 'Active',
+            notes: ''
+        };
+    
+        // Add type-specific properties
+        if (type === 'spaceship') {
+            properties.heavy_strength = 20;
+            properties.light_strength = 100;
+        } else if (type === 'soldier') {
+            properties.manpower = 10000;
+        }
+        
         const newUnit = {
             id: 'u_' + Date.now(),
             type: type,
             color: color,
             lat: center.lat,
             lng: center.lng,
-            properties: {
-                name: `${color.toUpperCase()} ${type === 'spaceship' ? 'Ship' : 'Soldier'}`,
-                heavy_strength: 20,
-                light_strength: 100,
-                morale: 100,
-                status: 'Active',
-                notes: ''
-            }
+            properties: properties
         };
         
         tacticalUnits.push(newUnit);
