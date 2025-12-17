@@ -29,7 +29,7 @@ function getUnitIcon(type, color) {
     }
 
     return L.divIcon({
-        className: 'leaflet-div-icon',
+        className: 'military-unit-icon',
         html: `<div class="unit-icon" style="width: 32px; height: 32px;">${svgHtml}</div>`,
         iconSize: [32, 32],
         iconAnchor: [16, 16], 
