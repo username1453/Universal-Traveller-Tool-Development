@@ -56,12 +56,20 @@ function renderUnit(unitData) {
     });
 
     // Conditional popup content based on unit type
-    let popupContent = `
-        <div class="p-3 font-sans" style="min-width: 200px;">
-            <h3 class="font-bold text-lg mb-1" style="color:${unitData.color === 'red' ? '#dc2626' : '#2563eb'}">
-                ${unitData.properties.name}
-            </h3>
-    `;
+        let popupContent = `
+            <div class="p-3 font-sans" style="min-width: 200px;">
+                <input type="text" 
+                    value="${unitData.properties.name}" 
+                    onchange="window.updateUnitProp('${unitData.id}', 'name', this.value)"
+                    style="color:${unitData.color === 'red' ? '#dc2626' : '#2563eb'}; 
+                           font-weight: bold; 
+                           font-size: 1.125rem; 
+                           border: none; 
+                           background: transparent; 
+                           width: 100%; 
+                           margin-bottom: 4px;"
+                    class="unit-name-input">
+        `;
 
     // Show different stats based on unit type
     if (unitData.type === 'spaceship') {
