@@ -348,22 +348,55 @@ zoneCirclesLayer.addTo(map);
 const tooltipThreshold = 3; // Tooltips become permanent at zoom >= 3
 let lastZoom = map.getZoom(); // Store the initial zoom level
 
-map.on('zoomend', function () {
+map.on('zoomend', () => {
     const zoom = map.getZoom();
+    const iconSize = getScaledIconSize(zoom);
+    const circleRadius = getScaledCircleRadius(zoom);
 
+    map.eachLayer(layer => {
+        // Scale regular icon markers (planets, spaceship)
+        if (layer instanceof L.Marker && 
+            layer.options.icon && 
+            layer.options.icon.options.iconUrl) {
+            layer.setIcon(L.icon({
+                iconUrl: layer.options.icon.options.iconUrl,
+                iconSize: [iconSize, iconSize],
+                iconAnchor: [iconSize / 2, iconSize / 2],
+                popupAnchor: [0, -iconSize / 2]
+            }));
+        }
+        
+        // Scale DivIcon markers (tactical units) - update their container size
+        else if (layer instanceof L.Marker && 
+                 layer.options.icon && 
+                 layer.options.icon.options.className === 'military-unit-icon') {
+            // Tactical units use DivIcons - scale the container
+            const currentIcon = layer.options.icon;
+            layer.setIcon(L.divIcon({
+                className: currentIcon.options.className,
+                html: currentIcon.options.html,
+                iconSize: [iconSize, iconSize],
+                iconAnchor: [iconSize / 2, iconSize / 2],
+                popupAnchor: [0, -iconSize / 2]
+            }));
+        }
+        
+        // Scale circle markers (zones)
+        else if (layer instanceof L.CircleMarker) {
+            layer.setRadius(circleRadius);
+        }
+        
+        // Skip GeoJSON polygon layers - they scale automatically
+        // (political boundaries, fog of war don't need manual scaling)
+    });
+    
+    // Tooltip visibility
     if (zoom < tooltipThreshold && lastZoom >= tooltipThreshold) {
-        // Zoomed below threshold — hide all tooltips
-        tooltips.forEach(tooltip => {
-            map.removeLayer(tooltip);
-        });
+        tooltips.forEach(tooltip => map.removeLayer(tooltip));
     } else if (zoom >= tooltipThreshold && lastZoom < tooltipThreshold) {
-        // Zoomed above threshold — show all tooltips
-        tooltips.forEach(tooltip => {
-            map.addLayer(tooltip);
-        });
+        tooltips.forEach(tooltip => map.addLayer(tooltip));
     }
-
-    lastZoom = zoom; // Update last zoom level
+    lastZoom = zoom;
 });
 
 // 🏴 POLITICAL BOUNDARIES
@@ -502,3 +535,4 @@ document.getElementById('toggleLegend').addEventListener('click', function() {
     const control = document.querySelector('.legend-control');
     control.classList.toggle('legend-hidden');
 });
+
