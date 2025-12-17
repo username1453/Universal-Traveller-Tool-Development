@@ -58,22 +58,33 @@ map.on('zoomend', updateIconSizes);
 // 📊 MARKER AND CIRCLE SCALING
 
 // Base sizes for icons and circle markers at the initial zoom level
-const baseIconSize = 32;
-const baseCircleRadius = 33;
-const scaleFactor = 0.33;
-const initialZoom = map.getZoom();
+const baseIconSize = 32;       // Default size for map icons (e.g., planet markers)
+const baseCircleRadius = 33;   // Default radius for circle markers (e.g., zone indicators)
+const scaleFactor = 0.33;      // Scaling factor determining how much size changes per zoom level
+const initialZoom = map.getZoom(); // Capture the map's initial zoom level for reference
 
+/**
+ * Calculate scaled icon size based on the current zoom level.
+ * @param {number} zoom - Current zoom level of the map.
+ * @returns {number} - The calculated icon size adjusted for zoom.
+ */
 function getScaledIconSize(zoom) {
     return baseIconSize * (1 + (zoom - initialZoom) * scaleFactor);
 }
 
+/**
+ * Update the size of all marker icons on the map based on the current zoom level.
+ * Iterates through each map layer, identifies markers, and adjusts their icon size dynamically.
+ */
 function updateMarkerIcons() {
     const zoom = map.getZoom();
     const size = getScaledIconSize(zoom);
 
-    // ✅ Only iterate through the planetary data layer, not ALL layers
-    planetarydatavar.eachLayer(layer => {
-        if (layer instanceof L.Marker && layer.options.icon && layer.options.icon.options.iconUrl) {
+    map.eachLayer(layer => {
+        // Skip DivIcon markers (like tactical units)
+        if (layer instanceof L.Marker && 
+            layer.options.icon && 
+            layer.options.icon.options.iconUrl) {  // ✅ Only process markers with iconUrl
             layer.setIcon(L.icon({
                 iconUrl: layer.options.icon.options.iconUrl,
                 iconSize: [size, size],
@@ -84,18 +95,27 @@ function updateMarkerIcons() {
     });
 }
 
+/**
+ * Calculate the scaled circle marker radius based on the current zoom level.
+ * @param {number} zoom - Current zoom level of the map.
+ * @returns {number} - The calculated circle radius adjusted for zoom.
+ */
 function getScaledCircleRadius(zoom) {
     return baseCircleRadius * (1 + (zoom - initialZoom) * scaleFactor);
 }
 
+/**
+ * Update the radius of all circle markers on the map based on the current zoom level.
+ * Iterates through each map layer, identifies circle markers, and adjusts their radius dynamically.
+ */
 function updateCircleMarkers() {
-    const zoom = map.getZoom();
-    const radius = getScaledCircleRadius(zoom);
+    const zoom = map.getZoom(); // Get the current zoom level
+    const radius = getScaledCircleRadius(zoom); // Calculate the scaled radius
 
-    // ✅ Only iterate through the zone circles layer, not ALL layers
-    zoneCirclesLayer.eachLayer(layer => {
+    map.eachLayer(layer => {
+        // Check if the layer is a CircleMarker
         if (layer instanceof L.CircleMarker) {
-            layer.setRadius(radius);
+            layer.setRadius(radius); // Apply the new scaled radius
         }
     });
 }
@@ -109,6 +129,7 @@ map.on('zoomend', () => {
 // Initial marker and circle updates
 updateMarkerIcons();
 updateCircleMarkers();
+
 
 // 🪐 CUSTOM ICON DEFINITIONS
 var wetIcon = new L.Icon({
@@ -481,5 +502,3 @@ document.getElementById('toggleLegend').addEventListener('click', function() {
     const control = document.querySelector('.legend-control');
     control.classList.toggle('legend-hidden');
 });
-
-
