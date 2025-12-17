@@ -4,6 +4,10 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.hidden {
+  display: none !important;
+}
+
 /* Ensure the html and body take up the full height and width */
 /* Base size for HTML element */
     html {
@@ -56,8 +60,8 @@
 .custom-btn-small {
     position: relative; /* Change from absolute to relative */
     display: block;    /* Makes them stack vertically in the menu */
-    margin: 5px auto;  /* Centers them and adds spacing between */
-    padding: 5px 10px;
+    margin: 3px auto;  /* Centers them and adds spacing between */
+    padding: 3px 10px;
     font-size: 9px;
     font-weight: bold; /* Bold text */
     text-align: center;
@@ -71,7 +75,7 @@
     line-height: 1.2; /* Adjust line height for better vertical alignment */
     width: auto; /* Ensure width adjusts based on text */
     min-width: 100px; /* Prevent buttons from being too narrow */
-    height: 28px; /* Define a standard button height */
+    height: 20px; /* Define a standard button height */
 }
   
   .custom-btn:hover {
@@ -191,7 +195,10 @@
 }
 
 .unit-dropdown-content li {
-  padding: 5px 0;
+    margin: 0;       /* Removes space outside the list item */
+    padding: 0;      /* Removes space inside the list item */
+    display: block;  /* Ensures they stack tightly */
+    line-height: 1;  /* Prevents text-line spacing from pushing the button down */
 }
 
 /* Navbar full width */
