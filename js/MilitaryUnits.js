@@ -59,13 +59,18 @@ function renderUnit(unitData) {
                 ${unitData.properties.name}
             </h3>
             <div class="text-sm text-gray-600 mb-2">
-                <strong>HP:</strong> <input type="number" value="${unitData.properties.hp}" 
-                    onchange="window.updateUnitProp('${unitData.id}', 'name', this.value)"
+                <strong>Large Ships:</strong> <input type="number" value="${unitData.properties.heavy_strength}" 
+                    onchange="window.updateUnitProp('${unitData.id}', 'heavy_strength', this.value)"
                     class="border rounded px-1 w-24 text-sm">
             </div>
             <div class="text-sm text-gray-600 mb-2">
-                <strong>HP:</strong> <input type="number" value="${unitData.properties.hp}" 
-                    onchange="window.updateUnitProp('${unitData.id}', 'hp', this.value)" 
+                <strong>Support Ships:</strong> <input type="number" value="${unitData.properties.light_strength}" 
+                    onchange="window.updateUnitProp('${unitData.id}', 'light_strength', this.value)"
+                    class="border rounded px-1 w-24 text-sm">
+            </div>
+            <div class="text-sm text-gray-600 mb-2">
+                <strong>Morale:</strong> <input type="number" value="${unitData.properties.morale}" 
+                    onchange="window.updateUnitProp('${unitData.id}', 'morale', this.value)" 
                     class="border rounded px-1 w-16 text-sm">
             </div>
             <div class="text-sm text-gray-600 mb-2">
@@ -143,7 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
             lng: center.lng,
             properties: {
                 name: `${color.toUpperCase()} ${type === 'spaceship' ? 'Ship' : 'Soldier'}`,
-                hp: 100,
+                heavy_strength: 20,
+                light_strength: 100,
+                morale: 100,
                 status: 'Active',
                 notes: ''
             }
