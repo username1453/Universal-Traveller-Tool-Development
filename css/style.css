@@ -151,6 +151,20 @@
     flex-shrink: 0; /* Prevent shrinking */
 }
 
+.unit-dropdown-content {
+  display: none; /* Hidden by default */
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.9);
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  z-index: 1000;
+}
+
+.unit-dropdown-content li {
+  padding: 5px 0;
+}
+
 /* Navbar full width */
 .navbar {
     min-height: 5vh; /* Set min-height using vh, but rely on height below */
@@ -306,6 +320,7 @@
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
