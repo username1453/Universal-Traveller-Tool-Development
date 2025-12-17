@@ -192,6 +192,10 @@
 }
 
 
+.military-unit-icon {
+    background: transparent;
+}
+
 /* Custom Popup Style with Starfield Background */
 .leaflet-popup-content-wrapper {
     background: url('../images/darkness.webp') repeat !important; /* Starfield background */
@@ -302,6 +306,7 @@
   .legend-hidden {
     display: none !important;
   }
+
 
 
 
