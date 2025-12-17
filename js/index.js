@@ -37,7 +37,10 @@ function updateIconSizes() {
     const size = baseSize + (zoom * scaleFactor);
 
     map.eachLayer(layer => {
-        if (layer instanceof L.Marker) {
+        // Skip DivIcon markers (like tactical units)
+        if (layer instanceof L.Marker && 
+            layer.options.icon && 
+            layer.options.icon.options.iconUrl) {  // ✅ Only process markers with iconUrl
             layer.setIcon(L.icon({
                 iconUrl: layer.options.icon.options.iconUrl,
                 iconSize: [size, size],
@@ -74,17 +77,19 @@ function getScaledIconSize(zoom) {
  * Iterates through each map layer, identifies markers, and adjusts their icon size dynamically.
  */
 function updateMarkerIcons() {
-    const zoom = map.getZoom(); // Get the current zoom level
-    const size = getScaledIconSize(zoom); // Calculate the scaled icon size
+    const zoom = map.getZoom();
+    const size = getScaledIconSize(zoom);
 
     map.eachLayer(layer => {
-        // Check if the layer is a Marker and has an icon defined
-        if (layer instanceof L.Marker && layer.options.icon) {
+        // Skip DivIcon markers (like tactical units)
+        if (layer instanceof L.Marker && 
+            layer.options.icon && 
+            layer.options.icon.options.iconUrl) {  // ✅ Only process markers with iconUrl
             layer.setIcon(L.icon({
-                iconUrl: layer.options.icon.options.iconUrl, // Preserve the original icon URL
-                iconSize: [size, size], // Apply the new scaled size
-                iconAnchor: [size / 2, size / 2], // Adjust anchor point to stay centered
-                popupAnchor: [0, -size / 2] // Adjust popup position based on new size
+                iconUrl: layer.options.icon.options.iconUrl,
+                iconSize: [size, size],
+                iconAnchor: [size / 2, size / 2],
+                popupAnchor: [0, -size / 2]
             }));
         }
     });
@@ -497,3 +502,4 @@ document.getElementById('toggleLegend').addEventListener('click', function() {
     const control = document.querySelector('.legend-control');
     control.classList.toggle('legend-hidden');
 });
+
