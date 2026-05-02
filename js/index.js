@@ -171,8 +171,10 @@ function planetaryfeatures(feature, layer) {
         popupContent += "<p>" + iconLine.join('') + "</p>";
     }
 
+    var starportPath = "starportmaps/" + feature.properties.Name.replace(/ /g, '_') + ".png";
     popupContent += "<p>" + "<a href='sector_data/" + planetfilePath + ".pdf' target='_blank' style='color: #32CD32; text-decoration: underline;'>" + 
-    "Planetary Profile" +  "</a></p>"  + 
+    "Planetary Profile" +  "</a></p>"  +  
+    "<a href='" + starportPath + "' target='_blank' style='color: #32CD32; text-decoration: underline;'>Starport Map</a>"  +
     "<a href='" + imageUrl + "' target='_blank'>" +     // Link
     "<img src='" + imageUrl + "' alt='" + feature.properties.Name + "' style='width:100%; max-width: 300px;'/>" +   // Preview
     "</a>";
