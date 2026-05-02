@@ -174,7 +174,7 @@ function planetaryfeatures(feature, layer) {
     var starportPath = "starportmaps/" + feature.properties.Name.replace(/ /g, '_') + ".png";
     popupContent += "<p>" + "<a href='sector_data/" + planetfilePath + ".pdf' target='_blank' style='color: #32CD32; text-decoration: underline;'>" + 
     "Planetary Profile" +  "</a></p>"  +  
-    "<p>""<a href='" + starportPath + "' target='_blank' style='color: #32CD32; text-decoration: underline;'>Starport Map</a>""</p>"  +
+    "<p><a href='" + starportPath + "' target='_blank' style='color: #32CD32; text-decoration: underline;'>Starport Map</a></p>"  +
     "<a href='" + imageUrl + "' target='_blank'>" +     // Link
     "<img src='" + imageUrl + "' alt='" + feature.properties.Name + "' style='width:100%; max-width: 300px;'/>" +   // Preview
     "</a>";
