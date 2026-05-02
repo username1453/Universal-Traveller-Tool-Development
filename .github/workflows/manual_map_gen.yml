@@ -1,24 +1,28 @@
 name: Manual Map Generation
-on: 
-  workflow_dispatch: # This creates the "Run Workflow" button in GitHub Actions
+on:
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-          
+
       - name: Install dependencies
-        run: pip install matplotlib # Required by starport_generator.py[cite: 1]
-        
+        run: pip install matplotlib pyjson5
+
       - name: Run Bulk Generator
         run: python bulk_generate.py
-        
+
       - name: Commit and Push
         run: |
           git config --global user.name "Starport Bot"
