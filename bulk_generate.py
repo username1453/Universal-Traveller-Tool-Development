@@ -2,13 +2,15 @@ import json
 import os
 import re
 from starport_generator import generate # verbatim import
+import pyjson5  # pip install pyjson5
 
 # 1. Load and clean the JavaScript file
-with open('PlanetaryData.js', 'r') as f:
+with open('js/PlanetaryData.js', 'r') as f:
     raw_content = f.read()
-    # Strip 'var planetarydata = ' and the trailing semicolon to get valid JSON
-    json_str = re.sub(r'var\s+\w+\s*=\s*', '', raw_content).strip().rstrip(';')
-    data = json.loads(json_str)
+    # Strip the JS variable assignment
+    import re
+    js_obj = re.sub(r'var\s+\w+\s*=\s*', '', raw_content).strip().rstrip(';')
+    data = pyjson5.loads(js_obj)
 
 # 2. Create the specific directory you requested
 output_dir = "starportmaps"
